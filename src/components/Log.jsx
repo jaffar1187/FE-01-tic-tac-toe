@@ -2,7 +2,13 @@ export default function Log({ gameTurn }) {
   if (!gameTurn) return;
   return (
     <ol id="log">
-      <li>{`${gameTurn.playerSymbol} selected ${gameTurn.row},${gameTurn.col}`}</li>
+      {gameTurn.map((turn) => {
+        return (
+          <li
+            key={`${turn.row}${turn.col}`}
+          >{`${turn.playerSymbol} selected ${turn.row},${turn.col}`}</li>
+        );
+      })}
     </ol>
   );
 }

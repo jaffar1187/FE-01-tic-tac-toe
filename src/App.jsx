@@ -41,8 +41,8 @@ function App() {
           setGameTurn={setGameTurn}
           turnsArray={turnsArray}
         />
-        <Log gameTurn={gameTurn} />
       </div>
+      <Log gameTurn={gameTurn} />
     </main>
   );
 }

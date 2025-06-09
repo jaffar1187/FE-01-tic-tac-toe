@@ -22,26 +22,17 @@ export default function GameBoard({
     });
 
     setGameTurn((prevTurn) => {
-      console.log(!prevTurn ? "X" : prevTurn.playerSymbol === "X" ? "O" : "X");
-      console.log({
+      const updatedTurns = [...prevTurn];
+      updatedTurns.push({
         row: rowIndex,
         col: colIndex,
         playerSymbol: !prevTurn
           ? "X"
-          : prevTurn.playerSymbol === "X"
+          : prevTurn[prevTurn.length - 1].playerSymbol === "X"
           ? "O"
           : "X",
       });
-
-      return {
-        row: rowIndex,
-        col: colIndex,
-        playerSymbol: !prevTurn
-          ? "X"
-          : prevTurn.playerSymbol === "X"
-          ? "O"
-          : "X",
-      };
+      return updatedTurns;
     });
   }
 
