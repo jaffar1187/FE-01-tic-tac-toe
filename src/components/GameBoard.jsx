@@ -4,20 +4,16 @@ export default function GameBoard({
   gameBoard,
   setGameBoard,
   activePlayer,
-  setActivePlayer,
   gameTurn,
   setGameTurn,
 }) {
   function handleSelectedSquare(rowIndex, colIndex) {
-    setActivePlayer((prevActivePlayer) => {
-      return prevActivePlayer === "X" ? "O" : "X";
-    });
-
     setGameBoard((prevGameBoard) => {
       const updatedBoard = [
         ...prevGameBoard.map((innerArray) => [...innerArray]),
       ];
       updatedBoard[rowIndex][colIndex] = activePlayer;
+      console.log(updatedBoard);
       return updatedBoard;
     });
 
@@ -26,11 +22,7 @@ export default function GameBoard({
       updatedTurns.push({
         row: rowIndex,
         col: colIndex,
-        playerSymbol: !prevTurn
-          ? "X"
-          : prevTurn[prevTurn.length - 1].playerSymbol === "X"
-          ? "O"
-          : "X",
+        playerSymbol: activePlayer,
       });
       return updatedTurns;
     });
@@ -47,6 +39,7 @@ export default function GameBoard({
                   <li key={colIndex}>
                     <button
                       onClick={() => handleSelectedSquare(rowIndex, colIndex)}
+                      disabled={playerSymbol}
                     >
                       {playerSymbol}
                     </button>
