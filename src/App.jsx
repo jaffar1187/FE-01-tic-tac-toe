@@ -6,15 +6,20 @@ import { WINNING_COMBINATIONS } from "./utils/winning-combinations";
 
 import { useState } from "react";
 
-const intialGameBoard = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
-
 function App() {
-  const [gameBoard, setGameBoard] = useState(intialGameBoard);
   const [gameTurn, setGameTurn] = useState([]);
+
+  const gameBoard = [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null],
+  ];
+
+  if (gameTurn.length) {
+    gameTurn.forEach((item) => {
+      gameBoard[item.row][item.col] = item.playerSymbol;
+    });
+  }
 
   let activePlayer;
   let winner = false;
@@ -58,14 +63,12 @@ function App() {
         {(winner || hasDraw) && (
           <GameOver
             winner={winner}
-            setGameBoard={setGameBoard}
             setGameTurn={setGameTurn}
             hasDraw={hasDraw}
           />
         )}
         <GameBoard
           gameBoard={gameBoard}
-          setGameBoard={setGameBoard}
           activePlayer={activePlayer}
           gameTurn={gameTurn}
           setGameTurn={setGameTurn}

@@ -1,22 +1,7 @@
-export default function GameOver({
-  winner,
-  hasDraw,
-  setGameBoard,
-  setGameTurn,
-}) {
+export default function GameOver({ winner, hasDraw, setGameTurn }) {
   function handleRestart() {
     winner = false;
     hasDraw = false;
-
-    setGameBoard(() => {
-      const updatedBoard = [
-        [null, null, null],
-        [null, null, null],
-        [null, null, null],
-      ];
-
-      return updatedBoard;
-    });
 
     setGameTurn(() => {
       const updatedBoard = [];

@@ -2,21 +2,11 @@ import { useState } from "react";
 
 export default function GameBoard({
   gameBoard,
-  setGameBoard,
   activePlayer,
   gameTurn,
   setGameTurn,
 }) {
   function handleSelectedSquare(rowIndex, colIndex) {
-    setGameBoard((prevGameBoard) => {
-      const updatedBoard = [
-        ...prevGameBoard.map((innerArray) => [...innerArray]),
-      ];
-      updatedBoard[rowIndex][colIndex] = activePlayer;
-      console.log(updatedBoard);
-      return updatedBoard;
-    });
-
     setGameTurn((prevTurn) => {
       const updatedTurns = [...prevTurn];
       updatedTurns.push({
