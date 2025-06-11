@@ -85,7 +85,7 @@ function App() {
           setGameTurn={setGameTurn}
         />
       </div>
-      <Log gameTurn={gameTurn} />
+      <Log gameTurn={gameTurn} allPlayersNames={allPlayersNames} />
     </main>
   );
 }
