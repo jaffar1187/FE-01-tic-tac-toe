@@ -8,12 +8,20 @@ import { useState } from "react";
 
 function App() {
   const [gameTurn, setGameTurn] = useState([]);
+  let allPlayersNames = {};
 
   const gameBoard = [
     [null, null, null],
     [null, null, null],
     [null, null, null],
   ];
+
+  if (!gameTurn.length) {
+    allPlayersNames = {
+      X: "X",
+      O: "O",
+    };
+  }
 
   if (gameTurn.length) {
     gameTurn.forEach((item) => {
@@ -53,11 +61,13 @@ function App() {
             intialName="Player 1"
             symbol={"X"}
             activePlayer={activePlayer === "X"}
+            allPlayersNames={allPlayersNames}
           />
           <Player
             intialName="Player 2"
             symbol={"O"}
             activePlayer={activePlayer === "O"}
+            allPlayersNames={allPlayersNames}
           />
         </ol>
         {(winner || hasDraw) && (
@@ -65,6 +75,7 @@ function App() {
             winner={winner}
             setGameTurn={setGameTurn}
             hasDraw={hasDraw}
+            allPlayersNames={allPlayersNames}
           />
         )}
         <GameBoard

@@ -5,12 +5,17 @@ export default function Player({
   symbol,
   activePlayer,
   playerIndex,
+  allPlayersNames,
 }) {
   const [playerName, setPlayerName] = useState(intialName);
   const [isEditing, setIsEditing] = useState(false);
 
   function handleEditClick() {
-    setIsEditing(!isEditing);
+    setIsEditing(() => !isEditing);
+  }
+
+  if (!isEditing) {
+    allPlayersNames[symbol] = playerName;
   }
 
   function handleChange(e) {
